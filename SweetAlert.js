@@ -8,7 +8,7 @@
 'use strict';
 
 angular.module('oitozero.ngSweetAlert', [])
-.factory('SweetAlert', [ '$rootScope', function ( $rootScope ) {
+.factory('SweetAlert', [ '$rootScope', '$compile', function ( $rootScope, $compile ) {
 
 	var swal = window.swal;
 
@@ -57,6 +57,9 @@ angular.module('oitozero.ngSweetAlert', [])
 			$rootScope.$evalAsync(function(){
 	        swal.close();
 	    });
+		},
+		compile: function() {
+			$compile(angular.element('.sweetalert'))($rootScope);
 		}
 	};
 

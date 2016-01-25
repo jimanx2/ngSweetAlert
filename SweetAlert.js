@@ -59,7 +59,10 @@ angular.module('oitozero.ngSweetAlert', [])
 	    });
 		},
 		compile: function() {
-			$compile(angular.element('.sweetalert'))($rootScope);
+	          $rootScope.$evalAsync(function(){
+	            console.log($('.sweet-alert button.cancel').unbind());
+	            $compile(angular.element('.sweet-alert > p'))($rootScope);
+	          });
 		}
 	};
 
